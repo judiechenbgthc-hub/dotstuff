@@ -1,0 +1,1478 @@
+version: 2.1
+
+jobs:
+  defun-query-scope:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: For tomorrow poll the battery level
+          command: |
+            mkdir -p /tmp/data/final
+            set +o pipefail 2>/dev/null; head -c 500000 /dev/urandom | tr -dc 'bcdfghjklmnpqrstvwxyz' | fold -w 25 > /tmp/data/final/access.log.8; true
+            md5sum /tmp/data/final/access.log.8 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'access.log.8'
+  java17-lint:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  cfg_StorePromise:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Collapse plus swipe
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo -n 'running low on memory' | od -An -tx1; true ; } > /tmp/data/final/mqZ
+            md5sum /tmp/data/final/mqZ > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'mqZ'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  weightsArray:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: The bastion host is to be bound next
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; grep -l -r if /etc/security 2>/dev/null | tail -n5; true ; } > /tmp/data/final/20.93
+            md5sum /tmp/data/final/20.93 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '20.93'
+  BUILD_LAB:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/20.93 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  yaf2w53:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Where is the front desk
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; set -- banana lime kiwi; echo "$2"; true ; } > /tmp/data/final/bramble472
+            md5sum /tmp/data/final/bramble472 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'bramble472'
+  do-the-thing:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  libmotor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: This is where we write off the credit notes
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo; echo '3 tests passed'; echo; true ; } > /tmp/data/final/030653_2018
+            md5sum /tmp/data/final/030653_2018 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '030653_2018'
+  dec21-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/030653_2018 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  Service-Tag:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: render png
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; cp /etc/hosts /dev/shm/step.conf && sed -i.orig '1i # managed by hand' /dev/shm/step.conf && grep -c . /dev/shm/step.conf; true ; } > /tmp/data/final/ae9587de643c545263324b976efd971b895e
+            md5sum /tmp/data/final/ae9587de643c545263324b976efd971b895e > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'ae9587de643c545263324b976efd971b895e'
+  run-production-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  paint_wrap_warn_row:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Next texture the cutscene
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo x >"${TMPDIR:-/tmp}/groceries_travel2.txt" && ln -f "${TMPDIR:-/tmp}/groceries_travel2.txt" "${TMPDIR:-/tmp}/autumn.log" && stat -c %h "${TMPDIR:-/tmp}/groceries_travel2.txt"; true ; } > /tmp/data/final/fnv_d9f539dbf
+            md5sum /tmp/data/final/fnv_d9f539dbf > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'fnv_d9f539dbf'
+  sam-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/fnv_d9f539dbf 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  proj-tango:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Balance The Skybox Low Res
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; mkdir -p '/tmp/kitchen' && cd '/tmp/kitchen' && touch banana cherry lime && ls && cd - >/dev/null; true ; } > /tmp/data/final/ca4150c7-3413
+            md5sum /tmp/data/final/ca4150c7-3413 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'ca4150c7-3413'
+  rip-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  handler-020612:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Audit the tax report q2
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; printf %s '50/50' | sha1sum | awk '{print $1}'; true ; } > /tmp/data/final/pulse.log
+            md5sum /tmp/data/final/pulse.log > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'pulse.log'
+  Build_Prod1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  proFixtureEntry:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: doStreamStagingTable
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; find /sys/class/net -type f -name 'e*' -atime -1 -exec wc -l {} + | tail -n 1; true ; } > /tmp/data/final/1615-market
+            md5sum /tmp/data/final/1615-market > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '1615-market'
+  oct20-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  normalizeProxyAnimated:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Renewal during shutdown
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; df -k|tr -s ' '|expand -t 2; true ; } > /tmp/data/final/28.16.175.246
+            md5sum /tmp/data/final/28.16.175.246 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '28.16.175.246'
+  build-quick-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/28.16.175.246 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  yara_sunset:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Turn off the worker fleet
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; for val in kiwi lemon mango melon; do echo "$val" | rev; done | paste -sd ' '; true ; } > /tmp/data/final/b1ue_wil1ow
+            md5sum /tmp/data/final/b1ue_wil1ow > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'b1ue_wil1ow'
+  auh-check-98:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  bin_zip:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: POST TO CRM
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; cp /etc/group /tmp/route.conf && sed -i -e '/^root/d' /tmp/route.conf && wc -l /tmp/route.conf; true ; } > /tmp/data/final/audit_20211214
+            md5sum /tmp/data/final/audit_20211214 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'audit_20211214'
+  CORE-460:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  tab_is_null:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Excuse the wait
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo "we're live" > /tmp/goal20230508.list && wc -c < /tmp/goal20230508.list; true ; } > /tmp/data/final/F
+            md5sum /tmp/data/final/F > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'F'
+  update-db:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/F 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  acquire_ratio_fails:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Scale Health Checks v13
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; cat /dev/null >"/dev/shm/tomato_1.conf" && ls -s "/dev/shm/tomato_1.conf"; true ; } > /tmp/data/final/4yV1PoQS
+            md5sum /tmp/data/final/4yV1PoQS > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '4yV1PoQS'
+  v2-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  FINX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: busy formatting weekly digest
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo 'greetings from linux' >"/tmp/widget_draft.csv"&&cp "/tmp/widget_draft.csv" /tmp/about.copy&&diff "/tmp/widget_draft.csv" /tmp/about.copy&&echo identical; true ; } > /tmp/data/final/vqWzBp2mr
+            md5sum /tmp/data/final/vqWzBp2mr > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'vqWzBp2mr'
+  Run_Suite4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/vqWzBp2mr 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  capability_status:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Truncation FAIL
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; getent passwd | awk -F':' '{print $1, $7}' | sort -u; true ; } > /tmp/data/final/stagebe0d10
+            md5sum /tmp/data/final/stagebe0d10 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'stagebe0d10'
+  dp:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/stagebe0d10 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  Batch2008:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Seed data is warm
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; shuf -i 1-688 -n 15|sort --numeric-sort|tail --lines=1; true ; } > /tmp/data/final/loadersigmaasset
+            md5sum /tmp/data/final/loadersigmaasset > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'loadersigmaasset'
+  v1-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  smaimkrantpy:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: ROW 010 MOCK SERVER TRIAGE
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; cut -c1-19 < /etc/skel/.profile|fold -w 46; true ; } > /tmp/data/final/61f1111f6
+            md5sum /tmp/data/final/61f1111f6 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '61f1111f6'
+  jun12-cleanup:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  rec-2005-w38:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: If the secrets bundle is locked bail out
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; /bin/ls -rv | shuf -n 2; true ; } > /tmp/data/final/o2IrJGjic
+            md5sum /tmp/data/final/o2IrJGjic > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'o2IrJGjic'
+  bob-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/o2IrJGjic 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  fOpen:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: As a last step wind down the nightly window
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; rm -f "/tmp/p2.txt" && echo 'cleaned'; true ; } > /tmp/data/final/build_40410
+            md5sum /tmp/data/final/build_40410 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'build_40410'
+  fix-dashboard:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  sierra_alfa:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Carry out a full deletion of the build artifacts
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; find /var/tmp -type f -name '*' -exec ls -1 {} + 2>/dev/null | awk -F/ '{print $NF}' | sort | uniq -c | sort -rn | head -n 5; true ; } > /tmp/data/final/ridgeCopperKappaKernel
+            md5sum /tmp/data/final/ridgeCopperKappaKernel > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'ridgeCopperKappaKernel'
+  rm-queue-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/ridgeCopperKappaKernel 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  DEV:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Jan 25 Optimization
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; m='name: demo'; printf '%q\n' "$m"; true ; } > /tmp/data/final/trial6_b313
+            md5sum /tmp/data/final/trial6_b313 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'trial6_b313'
+  pr-2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/trial6_b313 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  release-record:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: X21 spot check junit output
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; { printf "%s\n" paris perth sydney; } >"/tmp/coral.apple.out" && sort "/tmp/coral.apple.out"; true ; } > /tmp/data/final/221.213
+            md5sum /tmp/data/final/221.213 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '221.213'
+  wen-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/221.213 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  HI_T:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Exercise Warm Cobra
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; grep 'sh$' < /etc/passwd | sed 's/:.*//' | sort -r; true ; } > /tmp/data/final/INV_084975
+            md5sum /tmp/data/final/INV_084975 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'INV_084975'
+  ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  AESUnion:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: env var rebuild pass
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; awk -F: '{print $3}' /etc/passwd|tail -n 20|xargs; true ; } > /tmp/data/final/lagoonOrchardFrozen
+            md5sum /tmp/data/final/lagoonOrchardFrozen > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'lagoonOrchardFrozen'
+  november:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/lagoonOrchardFrozen 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  sk-Hans:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Let the feature store breathe
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; fold -w 23 /etc/os-release | head -n15; true ; } > /tmp/data/final/ci-ux-log
+            md5sum /tmp/data/final/ci-ux-log > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'ci-ux-log'
+  uma-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  ZoleV:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Bass drop streaming
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; for elem in max liam tom chen raj;do echo "${elem^}"; done | tac; true ; } > /tmp/data/final/greenThunderChrome
+            md5sum /tmp/data/final/greenThunderChrome > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'greenThunderChrome'
+  p-x:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  Charlie:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Finally zip the output bucket
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; printf '%s' "don't panic"; echo; true ; } > /tmp/data/final/worker937
+            md5sum /tmp/data/final/worker937 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'worker937'
+  update-cache-reload:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/worker937 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+  backport-graph-82:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: H hour warmup
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; id -Gn | tr ' ' '\n' | sed 's/^/- /' | nl; true ; } > /tmp/data/final/fnv_e48564bde59924e
+            md5sum /tmp/data/final/fnv_e48564bde59924e > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'fnv_e48564bde59924e'
+  refactor-7967:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Receive 5
+          command: |
+            cat /tmp/data/final/pulse.log 2>/dev/null | tr '\n' '\0' | od -An -c | head -2 || true
+      - run:
+          name: Checkout main
+          command: git clone --depth 2 -q --no-single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Fetch fixtures
+          command: tar -xf main-ledger.tar
+      - run:
+          command: ls -la
+      - run:
+          name: Cooldown
+          command: free -m
+      - run:
+          command: "./module-beta"
+
+  nudMUTEX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Call Ola if the settings gear fails
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'review pull request' | sed 's|request|strategy|'; true ; } > /tmp/data/final/20.93
+            md5sum /tmp/data/final/20.93 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '20.93'
+  orangeorange:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: P 120 shift roster badging
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; grep -i -R if /etc/skel|nl|head -n 8; true ; } > /tmp/data/final/030653_2018
+            md5sum /tmp/data/final/030653_2018 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - '030653_2018'
+  DualObservableSymbolStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Quarterly attestation
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; echo OK | tee -a /tmp/Meeting.note >/dev/null && wc -l /tmp/Meeting.note; true ; } > /tmp/data/final/o2IrJGjic
+            md5sum /tmp/data/final/o2IrJGjic > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'o2IrJGjic'
+  blocksArray:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Monthly login button long press
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; if [[ -d $HOME ]] ; then echo 'it is there'; fi; true ; } > /tmp/data/final/stagebe0d10
+            md5sum /tmp/data/final/stagebe0d10 > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'stagebe0d10'
+  border-plum:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/data/final
+      - run:
+          name: Notify the early adopters since it drifted
+          command: |
+            mkdir -p /tmp/data/final
+            { set +o pipefail 2>/dev/null; df -h | awk '{print $1}' | nl -w2 -s". " | awk '{print NF}'; true ; } > /tmp/data/final/ridgeCopperKappaKernel
+            md5sum /tmp/data/final/ridgeCopperKappaKernel > /dev/null && echo "md5 verified"
+      - persist_to_workspace:
+          root: /tmp/data/final
+          paths:
+            - 'ridgeCopperKappaKernel'
+workflows:
+  main:
+    jobs:
+      - handler-020612
+      - cfg_StorePromise
+      - HI_T
+      - Build_Prod1:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - package:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - ci:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - refactor-7967:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - v2-alpha:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - uma-test:
+          requires:
+            - handler-020612
+            - cfg_StorePromise
+            - HI_T
+      - release-record
+      - wen-push:
+          requires:
+            - release-record
+      - tab_is_null:
+          requires:
+            - release-record
+      - update-db:
+          requires:
+            - tab_is_null
+      - DEV:
+          requires:
+            - tab_is_null
+      - pr-2:
+          requires:
+            - DEV
+      - paint_wrap_warn_row:
+          requires:
+            - DEV
+      - sam-smoke:
+          requires:
+            - paint_wrap_warn_row
+      - FINX:
+          requires:
+            - paint_wrap_warn_row
+      - Run_Suite4:
+          requires:
+            - FINX
+      - normalizeProxyAnimated:
+          requires:
+            - FINX
+      - build-quick-test-matrix:
+          requires:
+            - normalizeProxyAnimated
+      - AESUnion:
+          requires:
+            - normalizeProxyAnimated
+      - november:
+          requires:
+            - AESUnion
+      - weightsArray
+      - nudMUTEX:
+          requires:
+            - weightsArray
+      - BUILD_LAB:
+          requires:
+            - nudMUTEX
+      - libmotor:
+          requires:
+            - nudMUTEX
+      - orangeorange:
+          requires:
+            - libmotor
+      - dec21-release:
+          requires:
+            - orangeorange
+      - rec-2005-w38:
+          requires:
+            - orangeorange
+      - DualObservableSymbolStore:
+          requires:
+            - rec-2005-w38
+      - bob-run:
+          requires:
+            - DualObservableSymbolStore
+      - capability_status:
+          requires:
+            - DualObservableSymbolStore
+      - blocksArray:
+          requires:
+            - capability_status
+      - dp:
+          requires:
+            - blocksArray
+      - sierra_alfa:
+          requires:
+            - blocksArray
+      - border-plum:
+          requires:
+            - sierra_alfa
+      - rm-queue-reload:
+          requires:
+            - border-plum
+      - Charlie
+      - Service-Tag
+      - update-cache-reload:
+          requires:
+            - Charlie
+            - Service-Tag
+      - run-production-test-matrix:
+          requires:
+            - Charlie
+            - Service-Tag
+      - do-the-thing:
+          requires:
+            - Charlie
+            - Service-Tag
+      - CORE-460:
+          requires:
+            - Charlie
+            - Service-Tag
+      - auh-check-98:
+          requires:
+            - Charlie
+            - Service-Tag
+      - v1-beta:
+          requires:
+            - Charlie
+            - Service-Tag
+      - rip-it:
+          requires:
+            - Charlie
+            - Service-Tag
+      - oct20-rev:
+          requires:
+            - Charlie
+            - Service-Tag
+      - jun12-cleanup:
+          requires:
+            - Charlie
+            - Service-Tag
+      - p-x:
+          requires:
+            - Charlie
+            - Service-Tag
+      - java17-lint:
+          requires:
+            - Charlie
+            - Service-Tag
+      - fix-dashboard:
+          requires:
+            - Charlie
+            - Service-Tag
